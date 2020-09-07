@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #224941 url('bg.jpg') no-repeat center center/cover;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh; /*pushes to center*/
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 300px; /*this is the height of inner black portion in which breath in hold breath out we see*/
+  width: 300px; /*this is the width*/
+  position: relative;
+  transform: scale(1);
+}
+
+.circle {
+  background-color: #010f1c;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute; /*we set this absolute because if we set this relative inner black portion then didn't match
+  & looks oval*/
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.gradient-circle {
+  background: conic-gradient(
+    #76b6c4 0%,
+    #7fcdff 40%,
+    #def3f6 40%,
+    #def3f6 60%,
+    #1da2d8 60%,
+    #064273 100%
+  ); /*this is the border gradient color*/
+  height: 320px;
+  width: 320px;
+  z-index: -2;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.pointer {
+  background-color: #fff;
+  border-radius: 90%; /*just to change the size of that rotating cicle if we set 10% then it looks square*/
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+
+.pointer-container {
+  position: absolute;
+  top: -40px;
+  left: 140px;
+  width: 20px;
+  height: 190px;
+  animation: rotate 7.5s linear forwards infinite; /*we set this infinite because we want this to run forever*/
+  transform-origin: bottom center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg); /*we want this to move like all in the case of clock it rounds the cicle*/
+  }
+}
+
+.container.grow {
+  animation: grow 3s linear forwards; /*so it will take 3s & perform animation*/
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2); /*if we set 5.2 or bigger then inner black portion take full screen size*/
+  }
+}
+
+.container.shrink {
+  animation: shrink 3s linear forwards;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1.2); /*just like we did last time we stop the anination to 1.2 from small to big now here shrink 
+    ho raha matlab ghat raha to uska opposite kar diya usme 1 se 1.2 tha isme 1.2 se 1*/
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
